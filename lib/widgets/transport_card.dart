@@ -13,6 +13,7 @@ class TransportCard extends StatefulWidget {
 class _TransportCardState extends State<TransportCard>
     with SingleTickerProviderStateMixin {
   double _scale = 1.0;
+  bool _fav = false;
 
   void _onTapDown(_) {
     setState(() => _scale = 0.97);
@@ -20,6 +21,14 @@ class _TransportCardState extends State<TransportCard>
 
   void _onTapUp(_) {
     setState(() => _scale = 1.0);
+  }
+
+  void _toggleFav() {
+    setState(() => _fav = !_fav);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(_fav ? 'أضيف إلى المفضلة' : 'أُزيل من المفضلة'),
+      duration: const Duration(seconds: 1),
+    ));
   }
 
   @override
@@ -74,17 +83,17 @@ class _TransportCardState extends State<TransportCard>
                                 borderRadius: BorderRadius.circular(8)),
                             child: InkWell(
                               borderRadius: BorderRadius.circular(8),
-                              onTap: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content: Text(
-                                            'تمت إضافة ${t.name} للمفضلة')));
-                              },
+                              onTap: _toggleFav,
                               child: Padding(
                                 padding: const EdgeInsets.all(6.0),
-                                child: Icon(Icons.favorite_border,
+                                child: Icon(
+                                    _fav
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
                                     size: rs(context, 18),
-                                    color: Colors.redAccent),
+                                    color: _fav
+                                        ? Colors.redAccent
+                                        : Colors.black54),
                               ),
                             ),
                           ),

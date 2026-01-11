@@ -99,14 +99,26 @@ class _HomeContentState extends State<HomeContent>
                     decoration: InputDecoration(
                       hintText: 'ابحث عن مكان أو خدمة',
                       prefixIcon: const Icon(Icons.search),
+                      filled: true,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 14),
                     ),
                   ),
                 ),
                 const SizedBox(width: 12),
-                IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.notifications)),
+                Material(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.notifications),
+                    splashRadius: 22,
+                  ),
+                ),
               ],
             ),
           ),
@@ -141,12 +153,17 @@ class _HomeContentState extends State<HomeContent>
                       final t = entry.value;
                       final img = transports[i % transports.length].image;
                       return Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        margin: const EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 8, horizontal: 12),
                           leading: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: SizedBox(
-                              width: 56,
-                              height: 56,
+                              width: rs(context, 56),
+                              height: rs(context, 56),
                               child: Image.asset(
                                 img,
                                 fit: BoxFit.cover,
@@ -157,8 +174,14 @@ class _HomeContentState extends State<HomeContent>
                               ),
                             ),
                           ),
-                          title: Text(t.title),
-                          subtitle: Text(t.subtitle),
+                          title: Text(t.title,
+                              style: TextStyle(
+                                  fontSize: rs(context, 16),
+                                  fontWeight: FontWeight.w600)),
+                          subtitle: Text(t.subtitle,
+                              style: TextStyle(
+                                  fontSize: rs(context, 12),
+                                  color: Colors.black54)),
                           trailing: ElevatedButton.icon(
                               onPressed: () {},
                               icon: const Icon(Icons.calendar_today, size: 16),
