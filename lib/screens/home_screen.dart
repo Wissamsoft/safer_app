@@ -136,22 +136,36 @@ class _HomeContentState extends State<HomeContent>
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
-                    children: trips
-                        .map((t) => Card(
-                              child: ListTile(
-                                leading: Container(
-                                    width: 56,
-                                    height: 56,
-                                    color: Colors.grey[300],
-                                    child: const Icon(Icons.directions_car)),
-                                title: Text(t.title),
-                                subtitle: Text(t.subtitle),
-                                trailing: ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text('احجز')),
+                    children: trips.asMap().entries.map((entry) {
+                      final i = entry.key;
+                      final t = entry.value;
+                      final img = transports[i % transports.length].image;
+                      return Card(
+                        child: ListTile(
+                          leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: SizedBox(
+                              width: 56,
+                              height: 56,
+                              child: Image.asset(
+                                img,
+                                fit: BoxFit.cover,
+                                errorBuilder: (ctx, err, st) => Container(
+                                  color: Colors.grey[200],
+                                  child: const Icon(Icons.directions_car),
+                                ),
                               ),
-                            ))
-                        .toList(),
+                            ),
+                          ),
+                          title: Text(t.title),
+                          subtitle: Text(t.subtitle),
+                          trailing: ElevatedButton.icon(
+                              onPressed: () {},
+                              icon: const Icon(Icons.calendar_today, size: 16),
+                              label: const Text('احجز')),
+                        ),
+                      );
+                    }).toList(),
                   ),
                 ),
               ],
@@ -161,20 +175,45 @@ class _HomeContentState extends State<HomeContent>
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
+                Expanded(
+                  child: ElevatedButton.icon(
                     onPressed: () => Navigator.pushNamed(context, '/payments'),
                     icon: const Icon(Icons.payment),
-                    label: const Text('الدفع')),
-                ElevatedButton.icon(
+                    label: const Text('الدفع'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.history),
-                    label: const Text('سجلات')),
-                ElevatedButton.icon(
+                    label: const Text('سجلات'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.help_outline),
-                    label: const Text('مساعدة')),
+                    label: const Text('مساعدة'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

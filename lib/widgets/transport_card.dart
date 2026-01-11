@@ -46,16 +46,50 @@ class _TransportCardState extends State<TransportCard>
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Container(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.width *
-                          0.22, // responsive
-                      color: Theme.of(context)
-                          .primaryColor
-                          .withAlpha((0.12 * 255).round()),
-                      child: Center(
-                          child: Icon(Icons.directions_bus,
-                              color: Theme.of(context).primaryColor, size: 40)),
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.width * 0.22,
+                          child: Image.asset(
+                            t.image,
+                            fit: BoxFit.cover,
+                            errorBuilder: (ctx, err, st) => Container(
+                              color: Theme.of(context)
+                                  .primaryColor
+                                  .withAlpha((0.12 * 255).round()),
+                              child: Center(
+                                  child: Icon(Icons.directions_bus,
+                                      color: Theme.of(context).primaryColor,
+                                      size: rs(context, 36))),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 6,
+                          top: 6,
+                          child: Material(
+                            color: Colors.white.withAlpha(220),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(8),
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text(
+                                            'تمت إضافة ${t.name} للمفضلة')));
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Icon(Icons.favorite_border,
+                                    size: rs(context, 18),
+                                    color: Colors.redAccent),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   const SizedBox(height: 8),
