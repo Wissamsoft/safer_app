@@ -3,6 +3,7 @@ import 'map_screen.dart';
 import 'profile_screen.dart';
 import '../core/mock_data.dart';
 import '../widgets/transport_card.dart';
+import '../core/responsive.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -75,8 +76,9 @@ class _HomeContentState extends State<HomeContent>
           children: [
             Expanded(
                 child: Text(title,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold))),
+                    style: TextStyle(
+                        fontSize: rs(context, 16),
+                        fontWeight: FontWeight.bold))),
             const Icon(Icons.chevron_left, size: 20, color: Colors.black26),
           ],
         ),

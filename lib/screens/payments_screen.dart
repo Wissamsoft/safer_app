@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../core/responsive.dart';
 
 class PaymentsScreen extends StatelessWidget {
   const PaymentsScreen({super.key});
@@ -12,8 +13,9 @@ class PaymentsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('بطاقاتك',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text('بطاقاتك',
+                style: TextStyle(
+                    fontSize: rs(context, 18), fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             Card(
               child: ListTile(

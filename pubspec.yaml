@@ -48,12 +48,6 @@ flutter:
     - assets/images/
     - assets/lottie/
 
-  fonts:
-    - family: Cairo
-      fonts:
-        - asset: assets/fonts/Cairo-Regular.ttf
-        - asset: assets/fonts/Cairo-Bold.ttf
-          weight: 700
 
 dev_dependencies:
   flutter_test:

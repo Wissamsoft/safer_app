@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../widgets/route_transitions.dart';
 import 'onboarding_screen.dart';
+import '../core/responsive.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -54,11 +55,11 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
+            Text(
               'انقطع الاتصال',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 22,
+                fontSize: rs(context, 22),
                 fontWeight: FontWeight.bold,
               ),
             ),

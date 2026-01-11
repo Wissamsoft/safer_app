@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../core/mock_data.dart';
+import '../core/responsive.dart';
 
 class TransportCard extends StatefulWidget {
   final Transport transport;
@@ -62,8 +63,8 @@ class _TransportCardState extends State<TransportCard>
                       style: const TextStyle(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
                   Text(t.priceInfo,
-                      style:
-                          const TextStyle(color: Colors.black54, fontSize: 12)),
+                      style: TextStyle(
+                          color: Colors.black54, fontSize: rs(context, 12))),
                 ],
               ),
             ),

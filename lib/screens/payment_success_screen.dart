@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../core/responsive.dart';
 
 class PaymentSuccessScreen extends StatelessWidget {
   const PaymentSuccessScreen({super.key});
@@ -36,8 +37,9 @@ class PaymentSuccessScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            const Text('تمت إضافة البطاقة',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text('تمت إضافة البطاقة',
+                style: TextStyle(
+                    fontSize: rs(context, 20), fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             const Text('تم حفظ بطاقتك بنجاح ويمكنك استخدامها الآن.',
                 textAlign: TextAlign.center),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../widgets/route_transitions.dart';
 import 'home_screen.dart';
+import '../core/responsive.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -81,8 +82,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         const SizedBox(height: 24),
                         Text(p['title']!,
-                            style: const TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold)),
+                            style: TextStyle(
+                                fontSize: rs(context, 22),
+                                fontWeight: FontWeight.bold)),
                         const SizedBox(height: 12),
                         Text(p['desc']!,
                             textAlign: TextAlign.center,
