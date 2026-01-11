@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'screens/splash_screen.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/home_screen.dart';
+import 'themes/app_theme.dart';
+import 'screens/payments_screen.dart';
+import 'screens/add_card_screen.dart';
+import 'screens/payment_success_screen.dart';
+import 'screens/profile_edit_screen.dart';
+import 'screens/settings_screen.dart';
+import 'screens/help_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,31 +18,30 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Safer App',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light(),
+      locale: const Locale('ar'),
+      supportedLocales: const [Locale('ar')],
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      home: const SplashScreen(),
+      routes: {
+        '/onboarding': (_) => const OnboardingScreen(),
+        '/home': (_) => const HomeScreen(),
+        '/payments': (_) => const PaymentsScreen(),
+        '/add_card': (_) => const AddCardScreen(),
+        '/payment_success': (_) => const PaymentSuccessScreen(),
+        '/profile_edit': (_) => const ProfileEditScreen(),
+        '/settings': (_) => const SettingsScreen(),
+        '/help': (_) => const HelpScreen(),
+      },
     );
   }
 }

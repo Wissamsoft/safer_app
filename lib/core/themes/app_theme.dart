@@ -9,25 +9,19 @@ class AppTheme {
         color: Colors.black,
         fontSize: 20,
         fontWeight: FontWeight.w600,
-
       ),
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
-
     ),
-
     iconTheme: IconThemeData(
       color: Colors.black,
     ),
-
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
       foregroundColor: Colors.white,
     ),
-
     scaffoldBackgroundColor: Colors.white,
-
     textTheme: TextTheme(
       displayLarge: AppText.h1 as TextStyle?,
       displayMedium: AppText.h2 as TextStyle?,
@@ -35,7 +29,6 @@ class AppTheme {
       bodySmall: AppText.caption as TextStyle?,
       labelLarge: AppText.button as TextStyle?,
     ),
-
     colorScheme: ColorScheme.light(
       primary: Colors.blue,
       onPrimary: Colors.white,
@@ -46,41 +39,35 @@ class AppTheme {
       surface: Colors.white,
       onSurface: Colors.black,
     ),
-
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.blue,
       textTheme: ButtonTextTheme.primary,
     ),
-
-    
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: Colors.blue, 
+        foregroundColor: Colors.blue,
         textStyle: AppText.link as TextStyle?,
       ),
     ),
-
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white, backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         textStyle: AppText.button as TextStyle?,
       ),
-    ),  
-
+    ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: Colors.blue, 
+        foregroundColor: Colors.blue,
         side: BorderSide(color: Colors.blue),
         textStyle: AppText.link as TextStyle?,
       ),
     ),
-
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: Colors.blue,
-      selectionColor: Colors.blue.withOpacity(0.5),
+      selectionColor: Colors.blue.withAlpha((0.5 * 255).round()),
       selectionHandleColor: Colors.blue,
     ),
-
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -93,15 +80,14 @@ class AppTheme {
       labelStyle: AppText.body as TextStyle?,
       hintStyle: AppText.caption as TextStyle?,
     ),
-
     snackBarTheme: SnackBarThemeData(
       backgroundColor: Colors.black87,
-      contentTextStyle: (AppText.body as TextStyle?)?.copyWith(color: Colors.white) ?? TextStyle(color: Colors.white),
+      contentTextStyle:
+          (AppText.body as TextStyle?)?.copyWith(color: Colors.white) ??
+              TextStyle(color: Colors.white),
       actionTextColor: Colors.blue,
     ),
   );
 
-  final darkTheme = ThemeData(
-    
-  );
+  final darkTheme = ThemeData();
 }
