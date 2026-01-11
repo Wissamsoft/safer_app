@@ -4,6 +4,8 @@ import 'profile_screen.dart';
 import '../core/mock_data.dart';
 import '../widgets/transport_card.dart';
 import '../core/responsive.dart';
+import '../screens/trip_detail_screen.dart';
+import '../widgets/route_transitions.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -157,6 +159,9 @@ class _HomeContentState extends State<HomeContent>
                             borderRadius: BorderRadius.circular(12)),
                         margin: const EdgeInsets.symmetric(vertical: 8),
                         child: ListTile(
+                          onTap: () => Navigator.of(context).push(
+                              createFadeRoute(TripDetailScreen(
+                                  title: t.title, subtitle: t.subtitle))),
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 8, horizontal: 12),
                           leading: ClipRRect(
