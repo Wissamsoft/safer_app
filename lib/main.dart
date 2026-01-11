@@ -10,6 +10,7 @@ import 'screens/payment_success_screen.dart';
 import 'screens/profile_edit_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/help_screen.dart';
+import 'screens/favorites_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/profile_edit': (_) => const ProfileEditScreen(),
         '/settings': (_) => const SettingsScreen(),
         '/help': (_) => const HelpScreen(),
+        '/favorites': (_) => const FavoritesScreen(),
       },
     );
   }

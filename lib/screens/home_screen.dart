@@ -36,7 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_titles[_selected])),
+      appBar: AppBar(title: Text(_titles[_selected]), actions: [
+        IconButton(
+            onPressed: () => Navigator.of(context).pushNamed('/favorites'),
+            icon: const Icon(Icons.favorite)),
+      ]),
       body: _pages[_selected],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selected,
