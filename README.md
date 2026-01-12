@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+---
+
+## Recent updates
+
+- Responsive & pixel-perfect pass: converted fixed sizes to relative values, added `lib/core/responsive.dart` helper `rs(context, size)`, and adjusted Lottie and card components for small screens.
+- Ran `flutter analyze` and `flutter test` — no issues found.
