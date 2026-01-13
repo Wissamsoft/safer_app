@@ -130,8 +130,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               createFadeRoute(const HomeScreen()));
                         }
                       },
-                      child:
-                          Text(_page < _pages.length - 1 ? 'التالي' : 'ابدأ'),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                      ),
+                      child: Text(
+                        _page < _pages.length - 1 ? 'التالي' : 'ابدأ',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: rs(context, 16)),
+                      ),
                     ),
                   )
                 ],

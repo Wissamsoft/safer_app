@@ -37,6 +37,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: const Text('مساعدة'),
             onTap: () => Navigator.pushNamed(context, '/help'),
           ),
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('عرض كل الشاشات'),
+            subtitle: const Text('انتقل إلى عرض يحتوي كل شاشات التطبيق'),
+            onTap: () => Navigator.pushNamed(context, '/all_screens'),
+          ),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),

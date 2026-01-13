@@ -19,8 +19,14 @@ final transports = <Transport>[
 class Trip {
   final String title;
   final String subtitle;
-  Trip(this.title, this.subtitle);
+  final String? image;
+  Trip(this.title, this.subtitle, {this.image});
 }
 
-final trips =
-    List.generate(5, (i) => Trip('رحلة ${i + 1}', 'من 0 إلى 20 دقيقة'));
+final trips = <Trip>[
+  Trip('رحلة 1', 'من 0 إلى 20 دقيقة', image: 'assets/images/1.jfif'),
+  Trip('رحلة 2', 'من 0 إلى 20 دقيقة', image: 'assets/images/2.webp'),
+  Trip('رحلة 3', 'من 0 إلى 20 دقيقة', image: 'assets/images/3.jpg'),
+  Trip('رحلة 4', 'من تعز الى الرياض'),
+  Trip('رحلة 5', 'من 0 إلى 20 دقيقة'),
+];

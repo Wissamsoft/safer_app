@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'map_screen.dart';
 import 'profile_screen.dart';
 import '../core/mock_data.dart';
@@ -40,6 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
         IconButton(
             onPressed: () => Navigator.of(context).pushNamed('/favorites'),
             icon: const Icon(Icons.favorite)),
+        if (kDebugMode)
+          PopupMenuButton<String>(
+            onSelected: (v) {
+              if (v == 'all') Navigator.of(context).pushNamed('/all_screens');
+            },
+            itemBuilder: (_) => const [
+              PopupMenuItem(value: 'all', child: Text('عرض كل الشاشات'))
+            ],
+          ),
       ]),
       body: _pages[_selected],
       bottomNavigationBar: BottomNavigationBar(
@@ -157,7 +167,8 @@ class _HomeContentState extends State<HomeContent>
                     children: trips.asMap().entries.map((entry) {
                       final i = entry.key;
                       final t = entry.value;
-                      final img = transports[i % transports.length].image;
+                      final img =
+                          t.image ?? transports[i % transports.length].image;
                       return Card(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12)),
@@ -177,8 +188,22 @@ class _HomeContentState extends State<HomeContent>
                                 img,
                                 fit: BoxFit.cover,
                                 errorBuilder: (ctx, err, st) => Container(
-                                  color: Colors.grey[200],
-                                  child: const Icon(Icons.directions_car),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withAlpha(40),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      t.title,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: rs(context, 12)),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -191,10 +216,20 @@ class _HomeContentState extends State<HomeContent>
                               style: TextStyle(
                                   fontSize: rs(context, 12),
                                   color: Colors.black54)),
-                          trailing: ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(Icons.calendar_today, size: 16),
-                              label: const Text('احجز')),
+                          trailing: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 10),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              minimumSize:
+                                  Size(rs(context, 64), rs(context, 36)),
+                            ),
+                            child: const Text('احجز الآن',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
                       );
                     }).toList(),
@@ -209,40 +244,73 @@ class _HomeContentState extends State<HomeContent>
             child: Row(
               children: [
                 Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () => Navigator.pushNamed(context, '/payments'),
-                    icon: const Icon(Icons.payment),
-                    label: const Text('الدفع'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                  child: Tooltip(
+                    message: 'الدفع',
+                    child: Semantics(
+                      button: true,
+                      label: 'الدفع',
+                      child: ElevatedButton.icon(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/payments'),
+                        icon: const Icon(Icons.payment, color: Colors.white),
+                        label: const Text('الدفع',
+                            style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.history),
-                    label: const Text('سجلات'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                  child: Tooltip(
+                    message: 'سجلات',
+                    child: Semantics(
+                      button: true,
+                      label: 'سجلات',
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.history, color: Colors.white),
+                        label: const Text('سجلات',
+                            style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                        onPressed: () => ScaffoldMessenger.of(context)
+                            .showSnackBar(
+                                const SnackBar(content: Text('فتح السجلات'))),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.help_outline),
-                    label: const Text('مساعدة'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                  child: Tooltip(
+                    message: 'مساعدة',
+                    child: Semantics(
+                      button: true,
+                      label: 'مساعدة',
+                      child: ElevatedButton.icon(
+                        icon:
+                            const Icon(Icons.help_outline, color: Colors.white),
+                        label: const Text('مساعدة',
+                            style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                        onPressed: () => ScaffoldMessenger.of(context)
+                            .showSnackBar(
+                                const SnackBar(content: Text('فتح المساعدة'))),
+                      ),
                     ),
                   ),
                 ),

@@ -11,5 +11,4 @@ class AppColors {
   static const int onBackground = 0xFF000000;
   static const int onSurface = 0xFF000000;
   static const int onError = 0xFFFFFFFF;
-  
 }

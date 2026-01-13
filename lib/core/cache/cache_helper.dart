@@ -1,3 +1,1 @@
-class CacheHelper {
-  
-}
+class CacheHelper {}

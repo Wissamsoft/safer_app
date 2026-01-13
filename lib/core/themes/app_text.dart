@@ -6,7 +6,7 @@ abstract class AppText {
     fontWeight: FontWeight.w700,
     height: 1.2,
     letterSpacing: -0.5,
-    color: Color(0xFF000000), 
+    color: Color(0xFF000000),
   );
 
   static TextStyle h2 = TextStyle(
@@ -14,15 +14,15 @@ abstract class AppText {
     fontWeight: FontWeight.w600,
     height: 1.3,
     letterSpacing: -0.25,
-    color: Color(0xFF000000), 
-  );  
+    color: Color(0xFF000000),
+  );
 
   static TextStyle body = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     height: 1.5,
     letterSpacing: 0.15,
-    color: Color(0xFF000000), 
+    color: Color(0xFF000000),
   );
 
   static TextStyle caption = TextStyle(
@@ -30,7 +30,7 @@ abstract class AppText {
     fontWeight: FontWeight.w400,
     height: 1.4,
     letterSpacing: 0.4,
-    color: Color(0xFF000000), 
+    color: Color(0xFF000000),
   );
 
   static TextStyle button = TextStyle(
@@ -38,7 +38,7 @@ abstract class AppText {
     fontWeight: FontWeight.w500,
     height: 1.2,
     letterSpacing: 1.25,
-    color: Color(0xFFFFFFFF), 
+    color: Color(0xFFFFFFFF),
   );
 
   static TextStyle link = TextStyle(
@@ -64,5 +64,4 @@ abstract class AppText {
     letterSpacing: 0.15,
     color: Color(0xFF388E3C), // Example success color
   );
-
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const Color primary = Color(0xFF4B3CDE);
@@ -14,7 +15,7 @@ class AppTheme {
         brightness: Brightness.light,
       ),
       scaffoldBackgroundColor: const Color(0xFFF7F7FA),
-      textTheme: base.textTheme.apply(fontFamily: 'Cairo'),
+      textTheme: GoogleFonts.cairoTextTheme(base.textTheme),
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -46,6 +47,12 @@ class AppTheme {
       cardTheme: CardTheme(
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: Colors.black87,
+        contentTextStyle:
+            base.textTheme.bodyMedium?.copyWith(color: Colors.white),
+        actionTextColor: primary,
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );

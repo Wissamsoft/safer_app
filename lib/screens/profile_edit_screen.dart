@@ -9,9 +9,9 @@ class ProfileEditScreen extends StatefulWidget {
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _name = TextEditingController(text: 'محمد الحسن');
+  final _name = TextEditingController(text: 'محمد الخياني');
   final _email = TextEditingController(text: 'user@example.com');
-  final _phone = TextEditingController(text: '+966500000000');
+  final _phone = TextEditingController(text: '7712456789');
 
   @override
   void dispose() {

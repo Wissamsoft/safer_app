@@ -21,7 +21,7 @@ class PaymentsScreen extends StatelessWidget {
               child: ListTile(
                 leading: const Icon(Icons.credit_card),
                 title: const Text('VISA **** 1234'),
-                subtitle: const Text('محمد الحسن'),
+                subtitle: const Text('محمد الخياني'),
                 trailing: TextButton(
                   onPressed: () {},
                   child: const Text('إزالة'),
